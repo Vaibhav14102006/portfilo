@@ -30,6 +30,9 @@ const Education: React.FC = () => {
       degree: "B.Tech in Computer Science",
       duration: "2024-2028",
       description: "CGPA: 9.02/10",
+      color: "from-blue-500 to-blue-600",
+      status: "Current",
+      highlights: ["Focusing on Computer Science fundamentals", "Participating in coding competitions", "Learning modern web development"]
     },
     {
       id: 2,
@@ -37,6 +40,9 @@ const Education: React.FC = () => {
       degree: "Higher Secondary Education",
       duration: "2023-2024",
       description: "Focused on Science and Mathematics",
+      color: "from-teal-500 to-teal-600",
+      status: "Completed",
+      highlights: ["Excelled in Mathematics and Computer Science", "Participated in science exhibitions", "Developed strong analytical skills"]
     },
   ];
 
@@ -98,7 +104,7 @@ const Education: React.FC = () => {
                           {item.degree}
                         </h3>
                         <p className="text-lg text-gray-600 dark:text-gray-300 font-medium">
-                          {item.specialization}
+                          {item.institution}
                         </p>
                       </div>
                     </div>
@@ -107,18 +113,14 @@ const Education: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                       <Calendar className="w-4 h-4" />
-                      <span className="text-sm">{item.period}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
-                      <MapPin className="w-4 h-4" />
-                      <span className="text-sm">{item.institution}</span>
+                      <span className="text-sm">{item.duration}</span>
                     </div>
                     <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
                       <Award className="w-4 h-4" />
-                      <span className="text-sm">{item.gpa}</span>
+                      <span className="text-sm">{item.description}</span>
                     </div>
                   </div>
 
