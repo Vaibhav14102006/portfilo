@@ -30,7 +30,10 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode }) => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-2 bg-white/70 dark:bg-gray-900/70 backdrop-blur-lg shadow-lg' : 'py-4 bg-transparent'}`}>
-      {/* Add liquid glass effect */}
+      {/* Liquid glass rod effect at top */}
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 opacity-80 backdrop-blur-md"></div>
+      
+      {/* Enhanced liquid glass effect */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-teal-500/10 backdrop-blur-md rounded-b-lg shadow-lg"></div>
       
       {/* Rest of your header content with relative positioning */}

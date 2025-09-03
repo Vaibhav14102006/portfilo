@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Database, Globe, Palette, Bot, Code, Server } from 'lucide-react';
+import { Database, Globe, Palette, Bot, Code, Server, Lightbulb, Layers } from 'lucide-react';
 
 const Skills: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -31,13 +31,13 @@ const Skills: React.FC = () => {
       color: 'from-orange-500 to-red-500',
       skills: [
         { name: 'MySQL', level: 90 },
-        { name: 'MySQL Workbench', level: 85 },
+        { name: 'Database design, queries, optimization', level: 85 },
         { name: 'PostgreSQL', level: 75 },
         { name: 'MongoDB', level: 70 },
       ],
     },
     {
-      title: 'Frontend',
+      title: 'Frontend Development',
       icon: Globe,
       color: 'from-blue-500 to-cyan-500',
       skills: [
@@ -52,38 +52,39 @@ const Skills: React.FC = () => {
       icon: Palette,
       color: 'from-purple-500 to-pink-500',
       skills: [
-        { name: 'UI/UX', level: 90 },
+        { name: 'Clean and user-centric interfaces', level: 90 },
         { name: 'Figma', level: 85 },
         { name: 'Tailwind CSS', level: 90 },
         { name: 'Design Systems', level: 80 },
       ],
     },
     {
-      title: 'Web Development',
-      icon: Code,
+      title: 'Full-Stack Development',
+      icon: Layers,
       color: 'from-indigo-500 to-blue-500',
       skills: [
-        { name: 'Full-Stack Development', level: 90 },
+        { name: 'End-to-end application development', level: 90 },
         { name: 'Responsive Design', level: 85 },
         { name: 'Web Performance', level: 80 },
         { name: 'Progressive Web Apps', level: 75 },
       ],
     },
     {
-      title: 'AI & ML',
+      title: 'AI & ML Foundations',
       icon: Bot,
       color: 'from-green-500 to-teal-500',
       skills: [
+        { name: 'Artificial Intelligence & Machine Learning', level: 85 },
         { name: 'Python', level: 85 },
-        { name: 'Machine Learning', level: 75 },
         { name: 'Data Analysis', level: 80 },
       ],
     },
     {
-      title: 'Tools & Others',
-      icon: Server,
+      title: 'Innovative Solutions',
+      icon: Lightbulb,
       color: 'from-yellow-500 to-orange-500',
       skills: [
+        { name: 'Creative problem-solving approach', level: 90 },
         { name: 'Git', level: 90 },
         { name: 'Docker', level: 70 },
         { name: 'AWS', level: 65 },

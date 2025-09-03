@@ -167,23 +167,8 @@ const Projects: React.FC = () => {
                     </span>
                   ))}
                 </div>
-
-                <div className="flex gap-3">
-                  <a
-                    href="#"
-                    className="flex items-center gap-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-sm rounded-full hover:from-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm rounded-full hover:bg-gray-50 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105"
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
-                </div>
+                
+                {/* Removed Live Demo and Code buttons */}
               </div>
             </div>
           ))}
@@ -194,23 +179,3 @@ const Projects: React.FC = () => {
 };
 
 export default Projects;
-
-// In the JSX where project cards are rendered, remove or comment out the Live Demo and Code links
-{/* Remove these links
-<div className="flex space-x-4 mt-4">
-  <a
-    href={project.link}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-300"
-  >
-    Live Demo
-  </a>
-  <a
-    href="#"
-    className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors duration-300"
-  >
-    Code
-  </a>
-</div>
-*/}
