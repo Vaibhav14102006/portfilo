@@ -118,23 +118,23 @@ const Skills: React.FC = () => {
         }}></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
         <div 
-          className={`text-center mb-16 transition-all duration-500 ${
+          className={`text-center mb-12 sm:mb-16 transition-all duration-500 ${
             isVisible 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 -translate-y-10'
           }`}
         >
-          <div className="inline-flex items-center gap-3 mb-4">
-            <Sparkles className={`w-8 h-8 text-blue-600 dark:text-blue-400 transition-all duration-400 ${
+          <div className="inline-flex items-center gap-2 sm:gap-3 mb-4">
+            <Sparkles className={`w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400 transition-all duration-400 ${
               isVisible ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
             }`} />
-            <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-600">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-600">
               Skills & Expertise
             </h2>
-            <Sparkles className={`w-8 h-8 text-blue-600 dark:text-blue-400 transition-all duration-400 ${
+            <Sparkles className={`w-6 h-6 sm:w-8 sm:h-8 text-blue-600 dark:text-blue-400 transition-all duration-400 ${
               isVisible ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'
             }`} />
           </div>

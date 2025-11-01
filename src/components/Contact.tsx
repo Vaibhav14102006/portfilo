@@ -152,25 +152,25 @@ const Contact: React.FC = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-teal-50/30 to-transparent dark:from-teal-900/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll relative z-10">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll relative z-10">
             Get In Touch
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-teal-600 mx-auto animate-on-scroll relative z-10"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mt-6 animate-on-scroll relative z-10">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-4 sm:mt-6 animate-on-scroll relative z-10 px-4">
             Let's discuss how we can work together on your next project
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 relative z-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 relative z-10">
           {/* Contact Info */}
-          <div className="space-y-8 animate-on-scroll">
-            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-3xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+          <div className="space-y-6 sm:space-y-8 animate-on-scroll">
+            <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-3xl p-6 sm:p-8 shadow-xl">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-4 sm:mb-6">
                 Let's Connect
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-8">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
                 I'm always open to discussing new opportunities, collaborations, and interesting projects. 
                 Feel free to reach out if you'd like to connect!
               </p>

@@ -70,8 +70,8 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50 dark:to-gray-900/50"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 xl:gap-24 items-center max-w-[90rem] mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center max-w-[90rem] mx-auto">
           {/* Left Side - Square Profile Photo */}
           <div className="flex flex-col items-center lg:items-end order-2 lg:order-1">
             <div className="relative group"
@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
                  onMouseEnter={() => setIsTapped(true)}
                  onMouseLeave={() => setIsTapped(false)}>
               
-              <div className="flex gap-3 md:gap-4 items-center">
+              <div className="flex gap-2 sm:gap-3 md:gap-4 items-center">
               {/* LEFT PHOTO - Real Image (rotated right to face center) */}
               <div className="relative" style={{
                 transformStyle: 'preserve-3d',
@@ -160,7 +160,7 @@ const Hero: React.FC = () => {
                 </div>
                 
                 {/* 3D Animated Photo Frame for real image */}
-                <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl relative overflow-visible">
+                <div className="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-3xl relative overflow-visible">
                   {/* Rotating 3D Border Rings */}
                   <div className="absolute -inset-4 rounded-3xl border-2 border-blue-400/30 animate-spin-slow"></div>
                   <div className="absolute -inset-6 rounded-3xl border border-purple-400/20" style={{ animation: 'spin 20s linear infinite reverse' }}></div>
@@ -291,7 +291,7 @@ const Hero: React.FC = () => {
                 </div>
                 
                 {/* Photo frame for mirror image */}
-                <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl relative overflow-visible">
+                <div className="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-3xl relative overflow-visible">
                   <div className="absolute -inset-2 bg-gradient-to-r from-teal-500 via-purple-500 to-blue-500 rounded-3xl opacity-25 blur-2xl group-hover:opacity-50 transition-all duration-700"></div>
                   <div className="absolute -inset-1 bg-gradient-to-br from-teal-400 via-purple-400 to-blue-400 rounded-3xl opacity-30 blur-xl group-hover:opacity-40 transition-all duration-700"></div>
                   
@@ -419,7 +419,7 @@ const Hero: React.FC = () => {
           <div className="text-left space-y-6 order-1 lg:order-2">
             {/* Name and Title with text animations */}
             <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black animate-fade-up" style={{
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black animate-fade-up" style={{
               color: '#b0b0b0',
               letterSpacing: '0.02em',
               textShadow: `

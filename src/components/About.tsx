@@ -37,17 +37,17 @@ const About: React.FC = () => {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-teal-100/20 to-blue-100/20 dark:from-teal-900/10 dark:to-blue-900/10 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll relative z-10">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll relative z-10">
             About Me
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-teal-600 mx-auto animate-on-scroll relative z-10"></div>
         </div>
 
         {/* Profile Section with Image */}
-        <div className="max-w-6xl mx-auto mb-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-6xl mx-auto mb-12 sm:mb-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Profile Image */}
             <div className="animate-on-scroll">
               <div className="relative group">
@@ -78,10 +78,10 @@ const About: React.FC = () => {
               </div>
               
               {/* Motivational Quote */}
-              <div className="mt-12 text-center animate-on-scroll">
+              <div className="mt-8 sm:mt-12 text-center animate-on-scroll">
                 <div className="inline-block bg-gray-800 dark:bg-gray-700 p-[2px] rounded-2xl shadow-lg">
-                  <div className="bg-white dark:bg-gray-800 rounded-2xl px-6 py-4">
-                    <p className="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-200 italic">
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl px-4 sm:px-6 py-3 sm:py-4">
+                    <p className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-gray-200 italic">
                       "Mission-driven. Code-powered. Relentlessly pushing boundaries to deploy intelligent solutions."
                     </p>
                   </div>
@@ -90,19 +90,19 @@ const About: React.FC = () => {
             </div>
 
             {/* About Text */}
-            <div className="animate-on-scroll space-y-6">
-              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-3xl p-8 shadow-xl">
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6">
+            <div className="animate-on-scroll space-y-4 sm:space-y-6">
+              <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-4 sm:mb-6">
                   Hello! I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-600">Vaibhav</span>
                 </h3>
-                <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-3 sm:mb-4">
                   A passionate <span className="font-semibold text-teal-600 dark:text-teal-400">AI & Full-Stack Engineering student</span> specializing in intelligent automation, voice-driven systems, and scalable web applications.
                 </p>
-                <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-4">
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed mb-3 sm:mb-4">
                   I build <span className="font-semibold text-purple-600 dark:text-purple-400">futuristic, human-centric technologies</span> including offline AI assistants, 
                   real-time automation systems, and modern Next.js platforms with immersive UI.
                 </p>
-                <p className="text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-700 dark:text-gray-200 leading-relaxed">
                   With a strong foundation in <span className="font-semibold text-orange-600 dark:text-orange-400">C++, Python, TypeScript</span>, and AI system design, 
                   I turn ideas into high-impact digital experiences that are <span className="font-semibold text-blue-600 dark:text-blue-400">smart, interactive, and intuitive</span>.
                 </p>
