@@ -35,6 +35,24 @@ const Hero: React.FC = () => {
       .animate-spin-bounce {
         animation: spinBounce 0.6s ease-in-out forwards;
       }
+      
+      /* Reduce animations on mobile for better performance */
+      @media (max-width: 768px) {
+        @keyframes spinBounce {
+          0% { 
+            transform: rotate(0deg) scale(1);
+          }
+          50% {
+            transform: rotate(180deg) scale(1.1);
+          }
+          100% {
+            transform: rotate(360deg) scale(1);
+          }
+        }
+        .animate-spin-bounce {
+          animation: spinBounce 0.4s ease-in-out forwards;
+        }
+      }
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
@@ -58,10 +76,10 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Enhanced parallax style with tap effect
+  // Enhanced parallax style with tap effect - Reduced for mobile
   const parallaxStyle = {
-    transform: `translate(${mousePosition.x * 0.003}px, ${mousePosition.y * 0.003}px) scale(${isTapped ? 1.05 : 1})`,
-    transition: 'transform 0.3s ease-out'
+    transform: `translate(${mousePosition.x * 0.002}px, ${mousePosition.y * 0.002}px) scale(${isTapped ? 1.03 : 1})`,
+    transition: 'transform 0.3s ease-out',
   };
 
   return (
@@ -452,16 +470,16 @@ const Hero: React.FC = () => {
           <div className="text-left space-y-6 order-1 lg:order-2">
             {/* Name and Title with text animations */}
             <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-black animate-fade-up" style={{
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black animate-fade-up" style={{
               color: '#b0b0b0',
               letterSpacing: '0.02em',
               textShadow: `
-                2px 2px 0 rgba(160, 160, 160, 0.6),
-                4px 4px 0 rgba(130, 130, 130, 0.4),
-                6px 6px 0 rgba(100, 100, 100, 0.3),
-                8px 8px 0 rgba(70, 70, 70, 0.2),
-                10px 10px 15px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(120, 120, 120, 0.15)
+                1px 1px 0 rgba(160, 160, 160, 0.6),
+                2px 2px 0 rgba(130, 130, 130, 0.4),
+                3px 3px 0 rgba(100, 100, 100, 0.3),
+                4px 4px 0 rgba(70, 70, 70, 0.2),
+                5px 5px 10px rgba(0, 0, 0, 0.2),
+                0 0 15px rgba(120, 120, 120, 0.15)
               `,
               transform: 'perspective(800px) rotateX(3deg)',
               filter: 'drop-shadow(0 4px 8px rgba(80, 80, 80, 0.1)) brightness(1.2)'
@@ -486,30 +504,34 @@ const Hero: React.FC = () => {
             <MagneticButton className="group">
               <a
                 href="#projects"
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-full hover:from-blue-700 hover:to-teal-700 transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.6)] flex items-center gap-2"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-full hover:from-blue-700 hover:to-teal-700 transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.6)] flex items-center justify-center gap-2 text-sm sm:text-base"
                 onMouseEnter={() => setProjectsHover(true)}
                 onMouseLeave={() => setProjectsHover(false)}
+                onTouchStart={() => setProjectsHover(true)}
+                onTouchEnd={() => setProjectsHover(false)}
               >
                 <Eye 
-                  className={`w-5 h-5 ${projectsHover ? 'animate-spin-bounce' : ''}`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${projectsHover ? 'animate-spin-bounce' : ''}`}
                   key={projectsHover ? 'hover' : 'normal'}
                 />
                 Explore My Work
-                <ChevronDown className="w-4 h-4 animate-bounce" />
+                <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 animate-bounce" />
               </a>
             </MagneticButton>
             <MagneticButton className="group">
               <a
                 href="/Vaibhav-Resume.pdf"
                 download="Vaibhav-Resume.pdf"
-                className="relative px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.5)] flex items-center gap-2 overflow-hidden"
+                className="relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.5)] flex items-center justify-center gap-2 overflow-hidden text-sm sm:text-base"
                 onMouseEnter={() => setResumeHover(true)}
                 onMouseLeave={() => setResumeHover(false)}
+                onTouchStart={() => setResumeHover(true)}
+                onTouchEnd={() => setResumeHover(false)}
               >
                 {/* Gradient border glow effect */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 via-purple-500 to-teal-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
                 <Download 
-                  className={`w-5 h-5 relative z-10 ${resumeHover ? 'animate-spin-bounce' : ''}`}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 relative z-10 ${resumeHover ? 'animate-spin-bounce' : ''}`}
                   key={resumeHover ? 'hover' : 'normal'}
                 />
                 <span className="relative z-10">Get My Resume</span>
@@ -518,20 +540,22 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center animate-fade-up-delay-3 mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center animate-fade-up-delay-3 mt-6">
             <a
               href="https://github.com/Vaibhav14102006"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+              className="group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
               onMouseEnter={() => setGithubHover(true)}
               onMouseLeave={() => setGithubHover(false)}
+              onTouchStart={() => setGithubHover(true)}
+              onTouchEnd={() => setGithubHover(false)}
             >
               <Github 
-                className={`w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${githubHover ? 'animate-spin-bounce' : ''}`}
+                className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${githubHover ? 'animate-spin-bounce' : ''}`}
                 key={githubHover ? 'hover' : 'normal'}
               />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                 View My GitHub
               </span>
             </a>
@@ -539,15 +563,17 @@ const Hero: React.FC = () => {
               href="https://www.linkedin.com/in/vaibhav-singh-rajawat-90766228a/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+              className="group flex items-center justify-center sm:justify-start gap-2 sm:gap-3 px-5 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
               onMouseEnter={() => setLinkedinHover(true)}
               onMouseLeave={() => setLinkedinHover(false)}
+              onTouchStart={() => setLinkedinHover(true)}
+              onTouchEnd={() => setLinkedinHover(false)}
             >
               <Linkedin 
-                className={`w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${linkedinHover ? 'animate-spin-bounce' : ''}`}
+                className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${linkedinHover ? 'animate-spin-bounce' : ''}`}
                 key={linkedinHover ? 'hover' : 'normal'}
               />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                 Connect on LinkedIn
               </span>
             </a>

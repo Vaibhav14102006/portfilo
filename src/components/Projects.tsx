@@ -6,12 +6,27 @@ const ProjectCard: React.FC<{ project: any; index: number; isVisible: boolean }>
   const cardRef = useRef<HTMLDivElement>(null);
   const [transform, setTransform] = useState('');
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Calculate card spread positions (like distributing playing cards)
   const getSpreadTransform = () => {
     if (!isVisible) {
       // All cards stacked at center when not visible
       return 'translate(0px, 0px) rotate(0deg) scale(0.8)';
+    }
+    
+    // Disable rotation on mobile for better performance
+    if (isMobile) {
+      return 'translate(0px, 0px) rotate(0deg) scale(1)';
     }
     
     // Spread pattern - cards fan out in all directions from center
@@ -25,7 +40,7 @@ const ProjectCard: React.FC<{ project: any; index: number; isVisible: boolean }>
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return; // Disable 3D effect on mobile
     
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();

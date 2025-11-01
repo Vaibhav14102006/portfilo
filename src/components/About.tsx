@@ -83,12 +83,12 @@ const About: React.FC = () => {
                 {/* Stats Overlay */}
                 <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full">
                   <div className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl shadow-xl border border-white/20 dark:border-gray-700/50 p-4">
-                    <div className="grid grid-cols-4 gap-2">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                       {stats.map((stat, index) => (
                         <div key={index} className="text-center">
-                          <stat.icon className="w-5 h-5 mx-auto mb-1 text-blue-600 dark:text-blue-400" />
-                          <div className="text-lg md:text-xl font-bold text-gray-800 dark:text-white">{stat.number}</div>
-                          <div className="text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
+                          <stat.icon className="w-4 h-4 sm:w-5 sm:h-5 mx-auto mb-1 text-blue-600 dark:text-blue-400" />
+                          <div className="text-base sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white">{stat.number}</div>
+                          <div className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400">{stat.label}</div>
                         </div>
                       ))}
                     </div>
