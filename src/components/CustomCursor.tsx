@@ -37,43 +37,25 @@ const CustomCursor: React.FC = () => {
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Single main cursor dot (keeps pointer simple and singular) */}
       <div
         className={`fixed pointer-events-none z-50 mix-blend-difference transition-all duration-150 ${
-          isHovering ? 'scale-150' : 'scale-100'
+          isHovering ? 'scale-125' : 'scale-100'
         } ${isClicking ? 'scale-75' : ''}`}
         style={{
           left: position.x - 8,
           top: position.y - 8,
+          width: 16,
+          height: 16,
         }}
       >
         <div className="w-4 h-4 bg-white rounded-full shadow-lg"></div>
       </div>
-      
-      {/* Outer ring */}
-      <div
-        className="fixed pointer-events-none z-50 transition-transform duration-300"
-        style={{
-          left: position.x - 20,
-          top: position.y - 20,
-        }}
-      >
-        <div className={`w-10 h-10 border-2 border-blue-500 rounded-full transition-all duration-300 ${
-          isHovering ? 'scale-150 border-teal-500' : 'scale-100'
-        } ${isClicking ? 'scale-75 border-purple-500' : ''}`}></div>
-      </div>
-      
-      {/* Spotlight effect */}
-      <div
-        className="fixed pointer-events-none z-40 transition-opacity duration-300"
-        style={{
-          left: position.x - 150,
-          top: position.y - 150,
-          opacity: isHovering ? 0.15 : 0.08,
-        }}
-      >
-        <div className="w-[300px] h-[300px] bg-gradient-radial from-blue-400/30 via-teal-400/10 to-transparent rounded-full blur-2xl"></div>
-      </div>
+      {/*
+        NOTE: Removed outer ring and spotlight to avoid duplicate/secondary pointers.
+        If you want the ring or spotlight only on hover, we can render them conditionally
+        when `isHovering` is true instead of always showing them.
+      */}
     </>
   );
 };
