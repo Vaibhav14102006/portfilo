@@ -1,0 +1,653 @@
+import React, { useEffect, useState } from 'react';
+import { ChevronDown, Download, Eye } from 'lucide-react';
+import { useTypewriter } from 'react-simple-typewriter';
+import MagneticButton from './MagneticButton';
+
+const Hero: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isTapped, setIsTapped] = useState(false);
+
+  // Typewriter effect
+  const [text] = useTypewriter({
+    words: ['AI & Full-Stack Engineer', 'Voice AI Developer', 'System Automation Expert', 'UI/UX Enthusiast'],
+    loop: true,
+    typeSpeed: 80,
+    deleteSpeed: 50,
+    delaySpeed: 1500
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Enhanced parallax style with tap effect
+  const parallaxStyle = {
+    transform: `translate(${mousePosition.x * 0.003}px, ${mousePosition.y * 0.003}px) scale(${isTapped ? 1.05 : 1})`,
+    transition: 'transform 0.3s ease-out'
+  };
+
+  return (
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      {/* Enhanced Colorful Background Design */}
+      <div className="absolute inset-0">
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-gray-900 dark:to-blue-950/50 transition-colors duration-500"></div>
+        
+        {/* Enhanced Colorful Background */}
+        <div className="absolute inset-0 opacity-[0.06] dark:opacity-[0.08]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, #14b8a6 2px, transparent 2px),
+              radial-gradient(circle at 50% 50%, #6366f1 1px, transparent 1px),
+              radial-gradient(circle at 20% 80%, #ec4899 2px, transparent 2px)
+            `,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
+        
+        {/* Enhanced Floating Elements */}
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue-400/15 to-purple-400/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-teal-400/12 to-blue-400/12 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        
+        {/* Enhanced Glow Effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-500/[0.05] to-purple-500/[0.05]"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+          {/* Left Side - Square Profile Photo */}
+          <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+            <div className="relative group"
+                 onMouseDown={() => setIsTapped(true)}
+                 onMouseUp={() => setIsTapped(false)}
+                 onTouchStart={() => setIsTapped(true)}
+                 onTouchEnd={() => setIsTapped(false)}>
+              
+              {/* Elegant Decorative Frame */}
+              <div className="absolute -inset-8 pointer-events-none z-20">
+                {/* Corner Ornaments - Top Left */}
+                <div className="absolute -top-6 -left-6 w-16 h-16">
+                  <svg viewBox="0 0 100 100" fill="none" className="w-full h-full transform group-hover:scale-110 transition-transform duration-500">
+                    {/* Outer arc */}
+                    <path d="M 5 95 Q 5 5, 95 5" stroke="url(#gradient1)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    {/* Inner arc */}
+                    <path d="M 15 85 Q 15 15, 85 15" stroke="url(#gradient1)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                    {/* Decorative dots */}
+                    <circle cx="8" cy="92" r="3" fill="url(#gradient1)" opacity="0.8"/>
+                    <circle cx="20" cy="80" r="2" fill="url(#gradient1)" opacity="0.6"/>
+                    <circle cx="92" cy="8" r="3" fill="url(#gradient1)" opacity="0.8"/>
+                    <circle cx="80" cy="20" r="2" fill="url(#gradient1)" opacity="0.6"/>
+                    {/* Elegant lines */}
+                    <path d="M 5 75 L 5 95 L 25 95" stroke="url(#gradient1)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M 75 5 L 95 5 L 95 25" stroke="url(#gradient1)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <defs>
+                      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#3b82f6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#14b8a6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Corner Ornaments - Top Right */}
+                <div className="absolute -top-6 -right-6 w-16 h-16">
+                  <svg viewBox="0 0 100 100" fill="none" className="w-full h-full transform rotate-90 group-hover:scale-110 transition-transform duration-500">
+                    <path d="M 5 95 Q 5 5, 95 5" stroke="url(#gradient2)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M 15 85 Q 15 15, 85 15" stroke="url(#gradient2)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                    <circle cx="8" cy="92" r="3" fill="url(#gradient2)" opacity="0.8"/>
+                    <circle cx="20" cy="80" r="2" fill="url(#gradient2)" opacity="0.6"/>
+                    <circle cx="92" cy="8" r="3" fill="url(#gradient2)" opacity="0.8"/>
+                    <circle cx="80" cy="20" r="2" fill="url(#gradient2)" opacity="0.6"/>
+                    <path d="M 5 75 L 5 95 L 25 95" stroke="url(#gradient2)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M 75 5 L 95 5 L 95 25" stroke="url(#gradient2)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <defs>
+                      <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#14b8a6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#3b82f6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Corner Ornaments - Bottom Right */}
+                <div className="absolute -bottom-6 -right-6 w-16 h-16">
+                  <svg viewBox="0 0 100 100" fill="none" className="w-full h-full transform rotate-180 group-hover:scale-110 transition-transform duration-500">
+                    <path d="M 5 95 Q 5 5, 95 5" stroke="url(#gradient3)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M 15 85 Q 15 15, 85 15" stroke="url(#gradient3)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                    <circle cx="8" cy="92" r="3" fill="url(#gradient3)" opacity="0.8"/>
+                    <circle cx="20" cy="80" r="2" fill="url(#gradient3)" opacity="0.6"/>
+                    <circle cx="92" cy="8" r="3" fill="url(#gradient3)" opacity="0.8"/>
+                    <circle cx="80" cy="20" r="2" fill="url(#gradient3)" opacity="0.6"/>
+                    <path d="M 5 75 L 5 95 L 25 95" stroke="url(#gradient3)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M 75 5 L 95 5 L 95 25" stroke="url(#gradient3)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <defs>
+                      <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#8b5cf6" />
+                        <stop offset="50%" stopColor="#3b82f6" />
+                        <stop offset="100%" stopColor="#14b8a6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Corner Ornaments - Bottom Left */}
+                <div className="absolute -bottom-6 -left-6 w-16 h-16">
+                  <svg viewBox="0 0 100 100" fill="none" className="w-full h-full transform -rotate-90 group-hover:scale-110 transition-transform duration-500">
+                    <path d="M 5 95 Q 5 5, 95 5" stroke="url(#gradient4)" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <path d="M 15 85 Q 15 15, 85 15" stroke="url(#gradient4)" strokeWidth="2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                    <circle cx="8" cy="92" r="3" fill="url(#gradient4)" opacity="0.8"/>
+                    <circle cx="20" cy="80" r="2" fill="url(#gradient4)" opacity="0.6"/>
+                    <circle cx="92" cy="8" r="3" fill="url(#gradient4)" opacity="0.8"/>
+                    <circle cx="80" cy="20" r="2" fill="url(#gradient4)" opacity="0.6"/>
+                    <path d="M 5 75 L 5 95 L 25 95" stroke="url(#gradient4)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <path d="M 75 5 L 95 5 L 95 25" stroke="url(#gradient4)" strokeWidth="2.5" strokeLinecap="round"/>
+                    <defs>
+                      <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#14b8a6" />
+                        <stop offset="50%" stopColor="#3b82f6" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Side Decorations - Top */}
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-6">
+                  <svg viewBox="0 0 200 40" fill="none" className="w-full h-full">
+                    <path d="M 20 20 Q 50 10, 100 20 T 180 20" stroke="url(#gradientTop)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+                    <circle cx="100" cy="20" r="4" fill="url(#gradientTop)" opacity="0.8">
+                      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="60" cy="17" r="2.5" fill="url(#gradientTop)" opacity="0.6"/>
+                    <circle cx="140" cy="17" r="2.5" fill="url(#gradientTop)" opacity="0.6"/>
+                    <defs>
+                      <linearGradient id="gradientTop" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#3b82f6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#14b8a6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Side Decorations - Bottom */}
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-6">
+                  <svg viewBox="0 0 200 40" fill="none" className="w-full h-full transform rotate-180">
+                    <path d="M 20 20 Q 50 10, 100 20 T 180 20" stroke="url(#gradientBottom)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+                    <circle cx="100" cy="20" r="4" fill="url(#gradientBottom)" opacity="0.8">
+                      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="60" cy="17" r="2.5" fill="url(#gradientBottom)" opacity="0.6"/>
+                    <circle cx="140" cy="17" r="2.5" fill="url(#gradientBottom)" opacity="0.6"/>
+                    <defs>
+                      <linearGradient id="gradientBottom" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#14b8a6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#3b82f6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Side Decorations - Left */}
+                <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 w-6 h-32">
+                  <svg viewBox="0 0 40 200" fill="none" className="w-full h-full">
+                    <path d="M 20 20 Q 10 50, 20 100 T 20 180" stroke="url(#gradientLeft)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+                    <circle cx="20" cy="100" r="4" fill="url(#gradientLeft)" opacity="0.8">
+                      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="17" cy="60" r="2.5" fill="url(#gradientLeft)" opacity="0.6"/>
+                    <circle cx="17" cy="140" r="2.5" fill="url(#gradientLeft)" opacity="0.6"/>
+                    <defs>
+                      <linearGradient id="gradientLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#3b82f6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#14b8a6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Side Decorations - Right */}
+                <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 w-6 h-32">
+                  <svg viewBox="0 0 40 200" fill="none" className="w-full h-full transform rotate-180">
+                    <path d="M 20 20 Q 10 50, 20 100 T 20 180" stroke="url(#gradientRight)" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
+                    <circle cx="20" cy="100" r="4" fill="url(#gradientRight)" opacity="0.8">
+                      <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="17" cy="60" r="2.5" fill="url(#gradientRight)" opacity="0.6"/>
+                    <circle cx="17" cy="140" r="2.5" fill="url(#gradientRight)" opacity="0.6"/>
+                    <defs>
+                      <linearGradient id="gradientRight" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stopColor="#14b8a6" />
+                        <stop offset="50%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#3b82f6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Floating particles around frame */}
+                <div className="absolute top-1/4 left-0 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-float"></div>
+                <div className="absolute top-1/3 right-0 w-2 h-2 bg-purple-400 rounded-full opacity-60 animate-float" style={{animationDelay: '1s'}}></div>
+                <div className="absolute bottom-1/4 left-0 w-2 h-2 bg-teal-400 rounded-full opacity-60 animate-float" style={{animationDelay: '2s'}}></div>
+                <div className="absolute bottom-1/3 right-0 w-2 h-2 bg-blue-400 rounded-full opacity-60 animate-float" style={{animationDelay: '0.5s'}}></div>
+              </div>
+              
+              {/* Enhanced frame border with gradient */}
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-3xl relative overflow-visible">
+                {/* Outer glow */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-teal-500 rounded-3xl opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500"></div>
+                
+                {/* Main border */}
+                <div className="relative w-full h-full rounded-3xl bg-gradient-to-br from-blue-500 via-purple-500 to-teal-500 p-[3px] shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                  {/* Inner border */}
+                  <div className="w-full h-full rounded-3xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 p-[2px]">
+                    {/* Photo container */}
+                    <div className="relative w-full h-full rounded-3xl bg-gray-200 dark:bg-gray-700 overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 z-10">
+                      <img
+                        src="/vaibhav.jpg"
+                        alt="Vaibhav Singh Rajawat"
+                        className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-110"
+                        style={parallaxStyle}
+                      />
+                      
+                      {/* Subtle gradient overlay on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+                  <path d="M0 85 Q 15 80, 30 82 Q 50 85, 70 83 Q 90 80, 110 84 Q 130 88, 150 85 Q 170 82, 190 86 Q 210 90, 230 87 Q 250 84, 270 88 Q 290 92, 310 89 Q 330 86, 350 90 Q 370 94, 385 91 L 400 93" stroke="#5d4037" strokeWidth="12" strokeLinecap="round"/>
+                  <path d="M0 85 Q 15 83, 30 85 Q 50 88, 70 86 Q 90 83, 110 87" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  <path d="M300 89 Q 320 92, 340 90 Q 360 88, 380 92 L 400 94" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  
+                  {/* Multiple extended branch offshoots spreading upward */}
+                  <path d="M25 83 Q 22 70, 20 58 Q 18 45, 16 32 L 15 20" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M28 83 Q 32 72, 36 62 Q 40 52, 44 42 L 48 32" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M70 83 Q 68 71, 66 60 Q 64 48, 62 36 L 60 24" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M74 83 Q 78 73, 82 64 Q 86 54, 90 44 L 94 34" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M115 84 Q 113 72, 111 60 Q 109 48, 107 36 L 105 24" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M119 84 Q 123 74, 127 65 Q 131 55, 135 45 L 139 35" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M160 85 Q 158 73, 156 62 Q 154 50, 152 38 L 150 26" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M164 85 Q 168 75, 172 66 Q 176 56, 180 46 L 184 36" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M205 87 Q 203 75, 201 64 Q 199 52, 197 40 L 195 28" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M209 87 Q 213 77, 217 68 Q 221 58, 225 48 L 229 38" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M250 87 Q 248 75, 246 64 Q 244 52, 242 40 L 240 28" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M254 87 Q 258 77, 262 68 Q 266 58, 270 48 L 274 38" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M295 89 Q 293 77, 291 66 Q 289 54, 287 42 L 285 30" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M299 89 Q 303 79, 307 70 Q 311 60, 315 50 L 319 40" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M340 90 Q 338 78, 336 67 Q 334 55, 332 43 L 330 31" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M344 90 Q 348 80, 352 71 Q 356 61, 360 51 L 364 41" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M375 91 Q 373 79, 371 68 Q 369 56, 367 44 L 365 32" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  
+                  {/* Bark texture and details */}
+                  <path d="M20 84 L 22 86" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M60 85 L 62 87" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M100 84 L 102 86" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M140 86 L 142 88" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M180 87 L 182 89" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M220 88 L 222 90" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M260 88 L 262 90" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M300 90 L 302 92" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M340 91 L 342 93" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M380 92 L 382 94" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                </svg>
+
+                {/* Right Border - Thick Realistic Branch */}
+                <svg className="absolute top-0 -right-16 w-40 h-full transform group-hover:scale-[1.02] transition-transform duration-700" viewBox="0 0 120 400" fill="none" preserveAspectRatio="none">
+                  <path d="M35 0 Q 30 15, 32 30 Q 35 50, 33 70 Q 30 90, 34 110 Q 38 130, 35 150 Q 32 170, 36 190 Q 40 210, 37 230 Q 34 250, 38 270 Q 42 290, 39 310 Q 36 330, 40 350 Q 44 370, 41 385 L 43 400" stroke="#5d4037" strokeWidth="12" strokeLinecap="round"/>
+                  <path d="M35 0 Q 33 15, 35 30 Q 38 50, 36 70 Q 33 90, 37 110" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  <path d="M39 300 Q 42 320, 40 340 Q 38 360, 42 380 L 44 400" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  
+                  {/* Extended branch offshoots spreading right */}
+                  <path d="M33 25 Q 43 23, 53 21 Q 63 19, 73 17 L 83 15" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M33 28 Q 40 32, 47 36 Q 54 40, 61 44 L 68 48" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M33 60 Q 43 58, 53 56 Q 63 54, 73 52 L 83 50" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M33 63 Q 40 67, 47 71 Q 54 75, 61 79 L 68 83" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M34 95 Q 44 93, 54 91 Q 64 89, 74 87 L 84 85" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M34 98 Q 41 102, 48 106 Q 55 110, 62 114 L 69 118" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M34 130 Q 44 128, 54 126 Q 64 124, 74 122 L 84 120" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M34 133 Q 41 137, 48 141 Q 55 145, 62 149 L 69 153" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M36 165 Q 46 163, 56 161 Q 66 159, 76 157 L 86 155" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M36 168 Q 43 172, 50 176 Q 57 180, 64 184 L 71 188" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M36 200 Q 46 198, 56 196 Q 66 194, 76 192 L 86 190" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M36 203 Q 43 207, 50 211 Q 57 215, 64 219 L 71 223" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M38 235 Q 48 233, 58 231 Q 68 229, 78 227 L 88 225" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M38 238 Q 45 242, 52 246 Q 59 250, 66 254 L 73 258" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M38 270 Q 48 268, 58 266 Q 68 264, 78 262 L 88 260" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M38 273 Q 45 277, 52 281 Q 59 285, 66 289 L 73 293" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M40 305 Q 50 303, 60 301 Q 70 299, 80 297 L 90 295" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M40 308 Q 47 312, 54 316 Q 61 320, 68 324 L 75 328" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M40 340 Q 50 338, 60 336 Q 70 334, 80 332 L 90 330" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M40 343 Q 47 347, 54 351 Q 61 355, 68 359 L 75 363" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M41 375 Q 51 373, 61 371 Q 71 369, 81 367 L 91 365" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  
+                  <path d="M34 20 L 36 22" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M35 60 L 37 62" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M34 100 L 36 102" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M36 140 L 38 142" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M37 180 L 39 182" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M38 220 L 40 222" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M38 260 L 40 262" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M40 300 L 42 302" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M41 340 L 43 342" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                </svg>
+
+                {/* Bottom Border - Thick Realistic Branch */}
+                <svg className="absolute -bottom-16 left-0 right-0 w-full h-40 transform group-hover:scale-[1.02] transition-transform duration-700" viewBox="0 0 400 120" fill="none" preserveAspectRatio="none">
+                  <path d="M0 27 Q 15 24, 30 26 Q 50 29, 70 27 Q 90 24, 110 28 Q 130 32, 150 29 Q 170 26, 190 30 Q 210 34, 230 31 Q 250 28, 270 32 Q 290 36, 310 33 Q 330 30, 350 34 Q 370 38, 385 35 L 400 37" stroke="#5d4037" strokeWidth="12" strokeLinecap="round"/>
+                  <path d="M0 27 Q 15 29, 30 27 Q 50 25, 70 28 Q 90 31, 110 29" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  <path d="M300 33 Q 320 36, 340 34 Q 360 32, 380 36 L 400 38" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  
+                  {/* Extended branch offshoots spreading downward */}
+                  <path d="M25 27 Q 22 40, 20 52 Q 18 65, 16 78 L 15 90" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M28 27 Q 32 38, 36 48 Q 40 58, 44 68 L 48 78" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M70 27 Q 68 39, 66 50 Q 64 62, 62 74 L 60 86" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M74 27 Q 78 37, 82 46 Q 86 56, 90 66 L 94 76" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M115 28 Q 113 40, 111 52 Q 109 64, 107 76 L 105 88" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M119 28 Q 123 38, 127 47 Q 131 57, 135 67 L 139 77" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M160 29 Q 158 41, 156 52 Q 154 64, 152 76 L 150 88" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M164 29 Q 168 39, 172 48 Q 176 58, 180 68 L 184 78" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M205 31 Q 203 43, 201 54 Q 199 66, 197 78 L 195 90" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M209 31 Q 213 41, 217 50 Q 221 60, 225 70 L 229 80" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M250 31 Q 248 43, 246 54 Q 244 66, 242 78 L 240 90" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M254 31 Q 258 41, 262 50 Q 266 60, 270 70 L 274 80" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M295 33 Q 293 45, 291 56 Q 289 68, 287 80 L 285 92" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M299 33 Q 303 43, 307 52 Q 311 62, 315 72 L 319 82" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M340 34 Q 338 46, 336 57 Q 334 69, 332 81 L 330 93" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M344 34 Q 348 44, 352 53 Q 356 63, 360 73 L 364 83" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M375 35 Q 373 47, 371 58 Q 369 70, 367 82 L 365 94" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  
+                  <path d="M20 28 L 22 26" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M60 29 L 62 27" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M100 29 L 102 27" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M140 30 L 142 28" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M180 31 L 182 29" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M220 32 L 222 30" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M260 33 L 262 31" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M300 34 L 302 32" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M340 35 L 342 33" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M380 36 L 382 34" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                </svg>
+
+                {/* Left Border - Thick Realistic Branch */}
+                <svg className="absolute top-0 -left-16 w-40 h-full transform group-hover:scale-[1.02] transition-transform duration-700" viewBox="0 0 120 400" fill="none" preserveAspectRatio="none">
+                  <path d="M85 0 Q 80 15, 82 30 Q 85 50, 83 70 Q 80 90, 84 110 Q 88 130, 85 150 Q 82 170, 86 190 Q 90 210, 87 230 Q 84 250, 88 270 Q 92 290, 89 310 Q 86 330, 90 350 Q 94 370, 91 385 L 93 400" stroke="#5d4037" strokeWidth="12" strokeLinecap="round"/>
+                  <path d="M85 0 Q 83 15, 85 30 Q 88 50, 86 70 Q 83 90, 87 110" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  <path d="M89 300 Q 92 320, 90 340 Q 88 360, 92 380 L 94 400" stroke="#4a2c2a" strokeWidth="9" opacity="0.7" strokeLinecap="round"/>
+                  
+                  {/* Extended branch offshoots spreading left */}
+                  <path d="M83 25 Q 73 23, 63 21 Q 53 19, 43 17 L 33 15" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M83 28 Q 76 32, 69 36 Q 62 40, 55 44 L 48 48" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M83 60 Q 73 58, 63 56 Q 53 54, 43 52 L 33 50" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M83 63 Q 76 67, 69 71 Q 62 75, 55 79 L 48 83" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M84 95 Q 74 93, 64 91 Q 54 89, 44 87 L 34 85" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M84 98 Q 77 102, 70 106 Q 63 110, 56 114 L 49 118" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M84 130 Q 74 128, 64 126 Q 54 124, 44 122 L 34 120" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M84 133 Q 77 137, 70 141 Q 63 145, 56 149 L 49 153" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M86 165 Q 76 163, 66 161 Q 56 159, 46 157 L 36 155" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M86 168 Q 79 172, 72 176 Q 65 180, 58 184 L 51 188" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M86 200 Q 76 198, 66 196 Q 56 194, 46 192 L 36 190" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M86 203 Q 79 207, 72 211 Q 65 215, 58 219 L 51 223" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M88 235 Q 78 233, 68 231 Q 58 229, 48 227 L 38 225" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M88 238 Q 81 242, 74 246 Q 67 250, 60 254 L 53 258" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M88 270 Q 78 268, 68 266 Q 58 264, 48 262 L 38 260" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M88 273 Q 81 277, 74 281 Q 67 285, 60 289 L 53 293" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M90 305 Q 80 303, 70 301 Q 60 299, 50 297 L 40 295" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M90 308 Q 83 312, 76 316 Q 69 320, 62 324 L 55 328" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M90 340 Q 80 338, 70 336 Q 60 334, 50 332 L 40 330" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  <path d="M90 343 Q 83 347, 76 351 Q 69 355, 62 359 L 55 363" stroke="#6d4c41" strokeWidth="4" strokeLinecap="round"/>
+                  <path d="M91 375 Q 81 373, 71 371 Q 61 369, 51 367 L 41 365" stroke="#6d4c41" strokeWidth="5" strokeLinecap="round"/>
+                  
+                  <path d="M84 20 L 82 22" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M85 60 L 83 62" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M84 100 L 82 102" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M86 140 L 84 142" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M87 180 L 85 182" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M88 220 L 86 222" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M88 260 L 86 262" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M90 300 L 88 302" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                  <path d="M91 340 L 89 342" stroke="#3e2723" strokeWidth="2" opacity="0.8"/>
+                </svg>
+
+                {/* Larger Green Leaves scattered all around */}
+                {/* Top area leaves */}
+                <div className="absolute top-6 left-12 transform rotate-20 animate-sway">
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-8 left-24 transform -rotate-40 animate-sway" style={{animationDelay: '0.3s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-4 left-36 transform rotate-75 animate-sway" style={{animationDelay: '0.6s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-10 left-48 transform -rotate-15 animate-sway" style={{animationDelay: '0.9s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-6 right-12 transform rotate-60 animate-sway" style={{animationDelay: '0.2s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-12 right-24 transform -rotate-25 animate-sway" style={{animationDelay: '0.5s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-8 right-36 transform rotate-105 animate-sway" style={{animationDelay: '0.8s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-14 right-48 transform -rotate-50 animate-sway" style={{animationDelay: '1.1s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                
+                {/* Right side leaves */}
+                <div className="absolute top-24 right-8 transform rotate-90 animate-sway" style={{animationDelay: '0.4s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-36 right-6 transform -rotate-30 animate-sway" style={{animationDelay: '0.7s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-48 right-8 transform rotate-135 animate-sway" style={{animationDelay: '1s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-60 right-6 transform -rotate-45 animate-sway" style={{animationDelay: '0.3s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                
+                {/* Bottom area leaves */}
+                <div className="absolute bottom-6 right-12 transform -rotate-55 animate-sway" style={{animationDelay: '0.6s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-10 right-24 transform rotate-150 animate-sway" style={{animationDelay: '0.9s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-8 right-36 transform -rotate-70 animate-sway" style={{animationDelay: '0.2s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-12 right-48 transform rotate-170 animate-sway" style={{animationDelay: '0.5s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-6 left-12 transform rotate-180 animate-sway" style={{animationDelay: '0.8s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-10 left-24 transform -rotate-70 animate-sway" style={{animationDelay: '1.1s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-8 left-36 transform rotate-195 animate-sway" style={{animationDelay: '0.4s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute bottom-14 left-48 transform -rotate-85 animate-sway" style={{animationDelay: '0.7s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                
+                {/* Left side leaves */}
+                <div className="absolute top-24 left-8 transform rotate-45 animate-sway" style={{animationDelay: '1s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-36 left-6 transform -rotate-60 animate-sway" style={{animationDelay: '0.3s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-48 left-8 transform rotate-110 animate-sway" style={{animationDelay: '0.6s'}}>
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+                <div className="absolute top-60 left-6 transform -rotate-80 animate-sway" style={{animationDelay: '0.9s'}}>
+                  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2 Q 16 8, 12 16 Q 8 8, 12 2" fill="#2d5016" opacity="0.9"/>
+                    <path d="M12 2 L 12 16" stroke="#1f3a0f" strokeWidth="0.8"/>
+                  </svg>
+                </div>
+              </div>
+              
+              {/* Simple frame border */}
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-3xl bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-700 dark:to-gray-800 p-[2px] shadow-2xl group-hover:shadow-3xl transition-all duration-500 relative overflow-hidden">
+                
+                {/* Photo container */}
+                <div className="relative w-full h-full rounded-3xl bg-gray-200 dark:bg-gray-700 overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 z-10">
+                  <img
+                    src="/vaibhav.jpg"
+                    alt="Vaibhav Singh Rajawat"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-110"
+                    style={parallaxStyle}
+                  />
+                  
+                  {/* Subtle gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Text Content */}
+          <div className="text-left space-y-6 order-1 lg:order-2">
+            {/* Name and Title with text animations */}
+            <div className="space-y-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-800 dark:text-white animate-fade-up">
+              Vaibhav Singh Rajawat
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 animate-fade-up-delay-1">
+              (He/Him)
+            </p>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 animate-fade-up-delay-2 h-10">
+              <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent font-semibold">
+                {text}
+              </span>
+              <span className="text-blue-500 animate-pulse">|</span>
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 items-start animate-fade-up-delay-3">
+            <MagneticButton className="group">
+              <a
+                href="#projects"
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-full hover:from-blue-700 hover:to-teal-700 transform transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center gap-2"
+              >
+                <Eye className="w-5 h-5" />
+                View Projects
+                <ChevronDown className="w-4 h-4 animate-bounce" />
+              </a>
+            </MagneticButton>
+            <MagneticButton className="group">
+              <a
+                href="/Vaibhav-Resume.pdf"
+                download="Vaibhav-Resume.pdf"
+                className="relative px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white transform transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center gap-2 overflow-hidden"
+              >
+                {/* Gradient border glow effect */}
+                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 via-purple-500 to-teal-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                <Download className="w-5 h-5 relative z-10" />
+                <span className="relative z-10">Download Resume</span>
+              </a>
+            </MagneticButton>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <ChevronDown className="w-6 h-6 text-gray-400" />
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
