@@ -1,15 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Download, Eye } from 'lucide-react';
+import { ChevronDown, Download, Eye, Github, Linkedin } from 'lucide-react';
 import { useTypewriter } from 'react-simple-typewriter';
 import MagneticButton from './MagneticButton';
 
 const Hero: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isTapped, setIsTapped] = useState(false);
+  const [githubHover, setGithubHover] = useState(false);
+  const [linkedinHover, setLinkedinHover] = useState(false);
+  const [projectsHover, setProjectsHover] = useState(false);
+  const [resumeHover, setResumeHover] = useState(false);
+
+  // Add custom styles for animations
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes spinBounce {
+        0% { 
+          transform: rotate(0deg) scale(1) translateY(0);
+        }
+        25% {
+          transform: rotate(90deg) scale(1.15) translateY(-8px);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.2) translateY(-10px);
+        }
+        75% {
+          transform: rotate(270deg) scale(1.15) translateY(-8px);
+        }
+        100% {
+          transform: rotate(360deg) scale(1) translateY(0);
+        }
+      }
+      .animate-spin-bounce {
+        animation: spinBounce 0.6s ease-in-out forwards;
+      }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   // Typewriter effect
   const [text] = useTypewriter({
-    words: ['AI & Full-Stack Engineer', 'Voice AI Developer', 'System Automation Expert', 'UI/UX Enthusiast'],
+    words: ['AI & Full-Stack Engineer', 'Voice AI Developer', 'System Automation Expert', 'UI/UX Designer', 'Machine Learning Engineer', 'Cloud Solutions Architect', 'Tech Innovator!', 'Full Stack Developer', 'Database Designer'],
     loop: true,
     typeSpeed: 80,
     deleteSpeed: 50,
@@ -70,8 +103,8 @@ const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50 dark:to-gray-900/50"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-center max-w-[90rem] mx-auto">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 xl:gap-24 items-center max-w-[90rem] mx-auto">
           {/* Left Side - Square Profile Photo */}
           <div className="flex flex-col items-center lg:items-end order-2 lg:order-1">
             <div className="relative group"
@@ -79,7 +112,7 @@ const Hero: React.FC = () => {
                  onMouseEnter={() => setIsTapped(true)}
                  onMouseLeave={() => setIsTapped(false)}>
               
-              <div className="flex gap-2 sm:gap-3 md:gap-4 items-center">
+              <div className="flex gap-3 md:gap-4 items-center">
               {/* LEFT PHOTO - Real Image (rotated right to face center) */}
               <div className="relative" style={{
                 transformStyle: 'preserve-3d',
@@ -160,7 +193,7 @@ const Hero: React.FC = () => {
                 </div>
                 
                 {/* 3D Animated Photo Frame for real image */}
-                <div className="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-3xl relative overflow-visible">
+                <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl relative overflow-visible">
                   {/* Rotating 3D Border Rings */}
                   <div className="absolute -inset-4 rounded-3xl border-2 border-blue-400/30 animate-spin-slow"></div>
                   <div className="absolute -inset-6 rounded-3xl border border-purple-400/20" style={{ animation: 'spin 20s linear infinite reverse' }}></div>
@@ -291,7 +324,7 @@ const Hero: React.FC = () => {
                 </div>
                 
                 {/* Photo frame for mirror image */}
-                <div className="w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] rounded-3xl relative overflow-visible">
+                <div className="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] rounded-3xl relative overflow-visible">
                   <div className="absolute -inset-2 bg-gradient-to-r from-teal-500 via-purple-500 to-blue-500 rounded-3xl opacity-25 blur-2xl group-hover:opacity-50 transition-all duration-700"></div>
                   <div className="absolute -inset-1 bg-gradient-to-br from-teal-400 via-purple-400 to-blue-400 rounded-3xl opacity-30 blur-xl group-hover:opacity-40 transition-all duration-700"></div>
                   
@@ -419,7 +452,7 @@ const Hero: React.FC = () => {
           <div className="text-left space-y-6 order-1 lg:order-2">
             {/* Name and Title with text animations */}
             <div className="space-y-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black animate-fade-up" style={{
+            <h1 className="text-5xl md:text-7xl font-black animate-fade-up" style={{
               color: '#b0b0b0',
               letterSpacing: '0.02em',
               textShadow: `
@@ -431,7 +464,7 @@ const Hero: React.FC = () => {
                 0 0 20px rgba(120, 120, 120, 0.15)
               `,
               transform: 'perspective(800px) rotateX(3deg)',
-              filter: 'drop-shadow(0 4px 8px rgba(80, 80, 80, 0.1))'
+              filter: 'drop-shadow(0 4px 8px rgba(80, 80, 80, 0.1)) brightness(1.2)'
             }}>
               Vaibhav Singh Rajawat
             </h1>
@@ -454,9 +487,14 @@ const Hero: React.FC = () => {
               <a
                 href="#projects"
                 className="px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white rounded-full hover:from-blue-700 hover:to-teal-700 transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.6)] flex items-center gap-2"
+                onMouseEnter={() => setProjectsHover(true)}
+                onMouseLeave={() => setProjectsHover(false)}
               >
-                <Eye className="w-5 h-5" />
-                View Projects
+                <Eye 
+                  className={`w-5 h-5 ${projectsHover ? 'animate-spin-bounce' : ''}`}
+                  key={projectsHover ? 'hover' : 'normal'}
+                />
+                Explore My Work
                 <ChevronDown className="w-4 h-4 animate-bounce" />
               </a>
             </MagneticButton>
@@ -465,13 +503,54 @@ const Hero: React.FC = () => {
                 href="/Vaibhav-Resume.pdf"
                 download="Vaibhav-Resume.pdf"
                 className="relative px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white transform transition-all duration-300 shadow-[0_8px_20px_rgba(59,130,246,0.3)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.5)] flex items-center gap-2 overflow-hidden"
+                onMouseEnter={() => setResumeHover(true)}
+                onMouseLeave={() => setResumeHover(false)}
               >
                 {/* Gradient border glow effect */}
                 <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-600 via-purple-500 to-teal-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-                <Download className="w-5 h-5 relative z-10" />
-                <span className="relative z-10">Download Resume</span>
+                <Download 
+                  className={`w-5 h-5 relative z-10 ${resumeHover ? 'animate-spin-bounce' : ''}`}
+                  key={resumeHover ? 'hover' : 'normal'}
+                />
+                <span className="relative z-10">Get My Resume</span>
               </a>
             </MagneticButton>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center animate-fade-up-delay-3 mt-6">
+            <a
+              href="https://github.com/Vaibhav14102006"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+              onMouseEnter={() => setGithubHover(true)}
+              onMouseLeave={() => setGithubHover(false)}
+            >
+              <Github 
+                className={`w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${githubHover ? 'animate-spin-bounce' : ''}`}
+                key={githubHover ? 'hover' : 'normal'}
+              />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                View My GitHub
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/vaibhav-singh-rajawat-90766228a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-3 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-200 dark:border-gray-700"
+              onMouseEnter={() => setLinkedinHover(true)}
+              onMouseLeave={() => setLinkedinHover(false)}
+            >
+              <Linkedin 
+                className={`w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 ${linkedinHover ? 'animate-spin-bounce' : ''}`}
+                key={linkedinHover ? 'hover' : 'normal'}
+              />
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                Connect on LinkedIn
+              </span>
+            </a>
           </div>
         </div>
         </div>

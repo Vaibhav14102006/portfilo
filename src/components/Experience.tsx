@@ -237,9 +237,9 @@ const Experience: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4 animate-on-scroll">
             Experience & Achievements
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-600 mx-auto mb-6 animate-on-scroll"></div>
@@ -249,8 +249,8 @@ const Experience: React.FC = () => {
         </div>
 
         {/* Highlights Section */}
-        <div className="max-w-6xl mx-auto mb-12 sm:mb-16 animate-on-scroll" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.8s ease-out' }}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="max-w-6xl mx-auto mb-16 animate-on-scroll" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.8s ease-out' }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {highlights.map((item, index) => (
               <div
                 key={index}
@@ -264,12 +264,12 @@ const Experience: React.FC = () => {
                 {/* 3D Glow effect */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
                 
-                <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border-2 border-white/20 dark:border-gray-700/50 rounded-2xl p-6 sm:p-8 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2"
+                <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl border-2 border-white/20 dark:border-gray-700/50 rounded-2xl p-8 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2"
                      style={{ transformStyle: 'preserve-3d' }}>
                   <div className="relative" style={{ transform: 'translateZ(20px)' }}>
-                    <item.icon className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-3 sm:mb-4 text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
-                    <div className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white mb-2">{item.value}</div>
-                    <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium">{item.label}</div>
+                    <item.icon className="w-10 h-10 mx-auto mb-4 text-purple-600 dark:text-purple-400 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
+                    <div className="text-3xl font-bold text-gray-800 dark:text-white mb-2">{item.value}</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">{item.label}</div>
                   </div>
                 </div>
               </div>
@@ -279,7 +279,24 @@ const Experience: React.FC = () => {
 
         {/* Experience Cards Grid */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {/* Section Heading for Experience Cards */}
+          <div 
+            className="text-center mb-12"
+            style={{ 
+              opacity: isVisible ? 1 : 0, 
+              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transition: 'all 0.8s ease-out'
+            }}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-3">
+              Professional Experience
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-base max-w-2xl mx-auto">
+              Detailed overview of my work experience and key contributions
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {experiences.map((exp, index) => (
               <ExperienceCard
                 key={exp.id}

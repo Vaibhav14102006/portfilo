@@ -203,13 +203,13 @@ const Education: React.FC = () => {
         <div className="absolute bottom-1/3 left-10 w-24 h-24 bg-gradient-to-tr from-teal-200/10 to-blue-200/10 dark:from-teal-800/5 dark:to-blue-800/5 rounded-full blur-2xl"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-12 sm:mb-16" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.8s ease-out' }}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-16" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? 'translateY(0)' : 'translateY(30px)', transition: 'all 0.8s ease-out' }}>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
             Education
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-teal-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-4">
+          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             Academic journey and educational background
           </p>
         </div>
@@ -259,7 +259,7 @@ const Education: React.FC = () => {
             </svg>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-20">
             {educationData.map((item, index) => (
               <EducationCard
                 key={item.id}
